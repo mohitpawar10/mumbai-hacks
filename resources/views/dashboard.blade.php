@@ -4,6 +4,9 @@
             <a href="{{ route('campaigns.create') }}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded">
                 Create Campaign
             </a>
+            <a href="{{ route('brands.create') }}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold ml-3 py-2 px-4 border border-gray-400 rounded">
+                Create Brand
+            </a>
         </h2>
     </x-slot>
 

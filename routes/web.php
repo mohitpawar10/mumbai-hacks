@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BrandController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,4 +19,5 @@ Route::middleware([
 
     // add campaign resource
     Route::resource('campaigns', CampaignController::class);
+    Route::resource('brands', BrandController::class);
 });

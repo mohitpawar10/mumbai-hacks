@@ -75,4 +75,12 @@ class User extends Authenticatable
        // campaigns relationship
        return $this->hasMany(Campaign::class);
     }
+
+    /**
+     * Brand Relationship
+     */
+    public function brands()
+    {
+        return $this->hasMany(Brand::class);
+    }
 }
