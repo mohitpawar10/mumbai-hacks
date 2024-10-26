@@ -31,12 +31,11 @@ class CampaignService
             'response_format' => 'url',
         ]);
 
-        // get the url from data in response
-        if (isset($response->data[0]['url'])) {
-           $campaign->update([
-               'banner_image' => $response->data[0]['url'],
-               'meta'         => $response,
-           ]);
+        foreach ($response->data as $data) {
+            $campaign->update([
+                'banner_image' => $data->url,
+                'meta'         => json_encode($response->toArray()),
+            ]);
         }
 
         // return the response
