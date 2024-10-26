@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('name');
             $table->longText('prompt');
+            $table->longText('banner_image')->nullable();
+            $table->json('meta')->nullable();
             $table->timestamps();
         });
     }

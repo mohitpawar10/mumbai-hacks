@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CampaignValidator;
+use App\Services\CampaignService;
 use Illuminate\Http\Request;
 
 class CampaignController extends Controller
 {
+
+    protected $campaignService;
+
+    public function __construct()
+    {
+        $this->campaignService = new CampaignService();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -34,17 +43,15 @@ class CampaignController extends Controller
     public function store(CampaignValidator $campaignValidator)
     {
         try {
-            // create a new campaign
-            auth()->user()->campaigns()->create([
-                'name'   => $campaignValidator->name,
-                'prompt' => $campaignValidator->prompt,
-            ]);
+            // create a new campaign and store it in variable
+            $campaign = auth()->user()->campaigns()->create($campaignValidator->validated());
+
+            $this->campaignService->generateBannerImage($campaign);
 
             // return back with a success message
             return back()->with('success', 'Campaign created successfully.');
         } catch (\Exception $e) {
 
-            dd($e);
             // return back with an error message
             return back()->with('error', 'There was an error creating the campaign.');
         }
