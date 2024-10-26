@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->unsignedBigInteger('brand_id');
             $table->string('name');
             $table->longText('prompt');
             $table->longText('banner_image')->nullable();

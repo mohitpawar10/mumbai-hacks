@@ -17,15 +17,15 @@
                                class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                placeholder="Enter Campaign name" required>
 
-{{--                        <label for="language" class="block mb-2 mt-2 text-sm font-medium text-gray-900">--}}
-{{--                            Language--}}
-{{--                        </label>--}}
-{{--                        <select id="language"--}}
-{{--                                class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">--}}
-{{--                            <option value="en" selected>English</option>--}}
-{{--                            <option value="mar">Marathi</option>--}}
-{{--                            <option value="hin">Hindi</option>--}}
-{{--                        </select>--}}
+                        <label for="brand_id" class="block mb-2 mt-2 text-sm font-medium text-gray-900">
+                            Brand
+                        </label>
+                        <select id="brand_id" name="brand_id"
+                                class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            @foreach($brands as $brand)
+                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                            @endforeach
+                        </select>
 
 {{--                        <label for="platform" class="block mb-2 mt-2 text-sm font-medium text-gray-900">--}}
 {{--                            Platform--}}

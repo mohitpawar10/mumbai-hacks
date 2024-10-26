@@ -33,8 +33,10 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        // return the create view
-        return view('campaigns.create');
+        $brands    = auth()->user()->brands;
+
+        // return the create view with brand
+        return view('campaigns.create', compact('brands'));
     }
 
     /**
@@ -43,8 +45,10 @@ class CampaignController extends Controller
     public function store(CampaignValidator $campaignValidator)
     {
         try {
+
             // create a new campaign and store it in variable
             $campaign = auth()->user()->campaigns()->create($campaignValidator->validated());
+
 
             $this->campaignService->generateBannerImage($campaign);
 

@@ -23,8 +23,7 @@ class CampaignValidator extends FormRequest
     {
         return [
             'name'       => 'required|string|max:255',
-//            'language'   => 'required|string',
-//            'platform'   => 'required|string',
+            'brand_id'   => 'required|exists:brands,id',
             'prompt'     => 'required|string',
         ];
     }
